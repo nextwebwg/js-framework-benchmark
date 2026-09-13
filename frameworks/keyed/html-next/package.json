@@ -1,0 +1,21 @@
+{
+  "name": "js-framework-benchmark-html-next",
+  "version": "0.0.0",
+  "description": "HTML Next keyed benchmark",
+  "type": "module",
+  "js-framework-benchmark": {
+    "frameworkVersion": "0.0.0+4eaf25b",
+    "frameworkHomeURL": "https://nextwebwg.org/html-next/",
+    "issues": [
+      801
+    ],
+    "language": "JavaScript",
+    "repoURL": "https://github.com/nextwebwg/html-next"
+  },
+  "scripts": {
+    "dev": "exit 0",
+    "build-prod": "exit 0"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/nextwebwg/js-framework-benchmark"
+}
