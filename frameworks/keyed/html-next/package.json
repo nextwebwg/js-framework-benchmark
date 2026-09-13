@@ -4,7 +4,7 @@
   "description": "HTML Next keyed benchmark",
   "type": "module",
   "js-framework-benchmark": {
-    "frameworkVersion": "0.0.0+4eaf25b",
+    "frameworkVersion": "0.0.0+ad78911",
     "frameworkHomeURL": "https://nextwebwg.org/html-next/",
     "issues": [
       801
