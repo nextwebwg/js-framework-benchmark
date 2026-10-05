@@ -8,7 +8,8 @@ const nouns = ["table", "chair", "house", "bbq", "desk", "car", "pony", "cookie"
 
 const random = (maximum) => Math.round(Math.random() * 1000) % maximum;
 
-export default function connect(host) {
+export default function initialize(host) {
+  host.state.selected = null;
   let nextId = 1;
   const buildData = (count = 1000) => {
     const rows = [];
@@ -53,21 +54,23 @@ export default function connect(host) {
     },
   };
 
-  const stop = host.on("click", (event) => {
-    const target = event.target instanceof Element ? event.target.closest("button, a") : null;
-    if (target === null || !host.element.contains(target)) return;
-    if (target instanceof HTMLButtonElement) {
-      actions[target.id]?.();
-      return;
-    }
-    const id = Number(target.closest("tr")?.dataset.id);
-    if (!Number.isFinite(id)) return;
-    if (target.dataset.action === "select") host.state.selected = id;
-    if (target.dataset.action === "remove") {
-      host.state.rows = host.state.rows.filter((row) => row.id !== id);
-    }
-  });
+  host.on("connect", () => {
+    const stop = host.on("click", (event) => {
+      const target = event.target instanceof Element ? event.target.closest("button, a") : null;
+      if (target === null || !host.root.contains(target)) return;
+      if (target instanceof HTMLButtonElement) {
+        actions[target.id]?.();
+        return;
+      }
+      const id = Number(target.closest("tr")?.dataset.id);
+      if (!Number.isFinite(id)) return;
+      if (target.dataset.action === "select") host.state.selected = id;
+      if (target.dataset.action === "remove") {
+        host.state.rows = host.state.rows.filter((row) => row.id !== id);
+      }
+    });
 
-  host.state.ready = true;
-  return stop;
+    host.state.ready = true;
+    return stop;
+  });
 }

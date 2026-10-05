@@ -1,3 +1,3 @@
-import { startBrowserComponents } from "./browser-loader.bundle.js";
+import { ready } from "./browser-loader.bundle.js";
 
-await startBrowserComponents(document);
+await ready;
